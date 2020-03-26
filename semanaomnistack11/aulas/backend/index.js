@@ -5,7 +5,8 @@ const app = express();
 app.get('/', (request, response) => {
     return response.json({
         Evento: 'Semana Omnistack 11.0',
-        Aluno: 'Rodrigo Chiaradia'
+        Aluno: 'Rodrigo Chiaradia',
+        Trabalho: 'teletrabalho'
     });
 });
 
