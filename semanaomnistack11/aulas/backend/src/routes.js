@@ -12,7 +12,7 @@ routes.post('/users', (request, response) => {
     return response.json({
         Evento: 'Semana Omnistack 11.0',
         Aluno: 'Rodrigo Chiaradia',
-        Trabalho: 'presencial'
+        Trabalho: 'teletrabalho'
     });
 });
 
