@@ -1,28 +1,25 @@
 //Aciona a dependência (pacote/"aplicação") 'express' na variável 'express'
 const express = require('express');
-
-//Importa o controlador das rotas das Ongs
+//Importa o controlador das rotas das Ongs, casos (incidents), casos específicos de uma ONGs (Profile)
+// e do controle de acesso (Session)
 const OngController = require('./controllers/OngController');
-
-//Importa o controlador das rotas dos Incidentes
 const IncidentController = require('./controllers/IncidentController');
-
-//Importa o controlador das rotas de listagem dos casos específicos de uma ONGs (Profile)
 const ProfileController = require('./controllers/ProfileController');
-
+const SessionController = require('./controllers/SessionController');
 //Desacopla o "módulo de rotas" do express em uma nova variável
 const routes = express.Router();
 
-//Códigos para as rotas - ONGs
+//Código para a rotas do login (Sessions)
+routes.post('/sessions', SessionController.create);
+//Códigos para a rota das ONGs
 routes.get('/ongs', OngController.index);
 routes.post('/ongs', OngController.create);
-//Códigos para as rotas - busca de caso específico de uma ONG
+//Código para a rota de busca de caso específico de uma ONG
 routes.get('/profile', ProfileController.index);
-//Códigos para as rotas - casos(incidents)
+//Código para a rota de acesso aos casos(incidents)
 routes.get('/incidents', IncidentController.index);
 routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
-
 
 module.exports = routes;
 
