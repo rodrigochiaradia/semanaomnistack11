@@ -1,5 +1,11 @@
-/*Aciona a dependência ("aplicação") 'express' na variável 'express'*/
+/*Aciona a dependência (pacote/"aplicação") 'express' na variável 'express'*/
 const express = require('express');
+
+/*Aciona a dependência (pacote/"aplicação") 'crypto' na variável 'express'*/
+const crypto = require('crypto');
+
+/*Importa a conexão cmo o BD*/
+const connection = require('./database/connection');
 
 /*Desacopla o "módulo de rotas" do express em uma nova variável*/
 const routes = express.Router();
@@ -66,16 +72,33 @@ app.listen(3333);
  
 */
 
-routes.post('/users', (request, response) => {
-    const body = request.body;
+/*Código da rota /ongs*/
+routes.post('/ongs', (request, response) => {
+   
+   /** variável para guardar os dados enviados pela requisição POST (input dos dados da ONG).
+    * A declaração de cada dado da variável ("name", "email", etc) ajuda a não receber dados indesejados.
+    * A alternativa à uma lista como essa seria uma variável única (sem estar entre conlchetes), a qual também 
+    * funcionaria, mas com o risco de receber dados que não sejam os que devem constar no cadastro da ONG. 
+    */ 
+   const {name, email, whatsapp, city, uf} = request.body;
+   
+   /** variável para gerar o id da ONG, a partir do pacote (dependência) "crypto". Gera um código aleatório de 
+    * 4 bytes, e o converte para uma string em formato hexadecimal.
+    */
+   const id = crypto.randomBytes(4).toString('HEX');
 
-    console.log(body);
-
-    return response.json({
-        Evento: 'Semana Omnistack 11.0',
-        Aluno: 'Rodrigo Chiaradia',
-        Trabalho: 'online'
-    });
+   connection('ongs').insert({
+      id,
+      name,
+      email,
+      whataspp,
+      city,
+      uf,
+   });
+   
+   console.log(data);
+   
+   return response.json();
 });
 
 /**
