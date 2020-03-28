@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 
 /**
+ * teste
  * Importa as rotas do arquivo 'routes.js' para o index.js. No comando 'require', o parâmetro
  * (texto dentro das aspas simples) dentro dos parênteses é interpretado como um pacote,
  * a não ser que seja precedido  de './', que indica ao comando que se trata de um arquivo.
