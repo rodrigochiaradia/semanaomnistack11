@@ -7,15 +7,22 @@ const OngController = require('./controllers/OngController');
 //Importa o controlador das rotas dos Incidentes
 const IncidentController = require('./controllers/IncidentController');
 
+//Importa o controlador das rotas de listagem dos casos específicos de uma ONGs (Profile)
+const ProfileController = require('./controllers/ProfileController');
+
 //Desacopla o "módulo de rotas" do express em uma nova variável
 const routes = express.Router();
 
-//Códigos para as rotas
+//Códigos para as rotas - ONGs
 routes.get('/ongs', OngController.index);
 routes.post('/ongs', OngController.create);
+//Códigos para as rotas - busca de caso específico de uma ONG
+routes.get('/profile', ProfileController.index);
+//Códigos para as rotas - casos(incidents)
 routes.get('/incidents', IncidentController.index);
 routes.post('/incidents', IncidentController.create);
 routes.delete('/incidents/:id', IncidentController.delete);
+
 
 module.exports = routes;
 
