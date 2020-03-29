@@ -1,26 +1,26 @@
+// a importação do React é obrigatório para qualquer componente React, mesmo que não haja 
+// uma variável especificando a chamada do React. Na verdade, o fato de haver uma função 
+// já significa que este componente está utilizando o React!
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
+//Chama o componente 'Header'
+import Header from './Header';
+
+//Função exportada para o index.js, que vai preencher o body da página HTML
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello Omnistack
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //formato alternativo ao que utilizou a função 'title' (cujo código está transcrito ao final)
+    <Header>
+      Semana OmniStack
+    </Header>
   );
 }
 
 export default App;
+
+// CÓDIGO ALTERNATIVO! utilizando um atributo ('title') dentro da tag 'Header'
+//function App() {
+//  return (
+//    <Header title="Semana OmniStack" />
+//  );
+//}
